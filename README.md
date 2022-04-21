@@ -1,2 +1,1 @@
-# react-dictionary
-A react dictionary app
+A react-dictionary app.
