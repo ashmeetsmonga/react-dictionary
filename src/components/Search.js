@@ -4,19 +4,27 @@ import DictionaryContext from "../context/DictionaryContext";
 const URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 function Search() {
-	const { word, setWord, result, setResult } = useContext(DictionaryContext);
+	const { word, setWord, setResult, isIncorrect, setIsIncorrect } =
+		useContext(DictionaryContext);
 
 	const handleChange = (e) => {
 		setWord(e.target.value);
 	};
 
 	const handleClick = () => {
-		console.log(word);
 		fetch(`${URL}${word}`)
-			.then((res) => res.json())
+			.then((res) => {
+				if (!res.ok) throw new Error("Incorrect Word");
+				return res.json();
+			})
 			.then((data) => {
 				console.log(data[0]);
 				setResult(data[0]);
+				setIsIncorrect(false);
+			})
+			.catch((err) => {
+				console.log("error");
+				setIsIncorrect(true);
 			});
 	};
 
