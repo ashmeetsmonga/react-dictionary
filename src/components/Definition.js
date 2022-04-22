@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import DictionaryContext from "../context/DictionaryContext";
 
-function Definition() {
+function Definition({ definitions }) {
 	return (
-		<div className='md:w-1/3'>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero,
-			laudantium? Numquam, saepe nam quia commodi perspiciatis quos quibusdam
-			placeat repellat!
+		<div className='space-y-4 md:w-1/3'>
+			<div className='font-bold text-xl'>Definitions</div>
+			{definitions?.map((obj, ind) => (
+				<div key={ind}>{obj.definition}</div>
+			))}
 		</div>
 	);
 }

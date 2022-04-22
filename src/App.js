@@ -5,13 +5,17 @@ import DictionaryContext from "./context/DictionaryContext";
 
 function App() {
 	const [word, setWord] = useState("");
-	const [definiton, setDefinition] = useState("");
-	const [example, setExample] = useState("");
+	const [result, setResult] = useState();
 
 	return (
 		<div>
 			<DictionaryContext.Provider
-				value={{ word, setWord, definiton, setDefinition, example, setExample }}
+				value={{
+					word,
+					setWord,
+					result,
+					setResult,
+				}}
 			>
 				<Header />
 				<Content />

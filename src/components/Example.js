@@ -1,11 +1,12 @@
 import React from "react";
 
-function Example() {
+function Example({ definitions }) {
 	return (
-		<div className='md:w-1/3'>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-			suscipit ullam ad rerum quisquam omnis dolore, excepturi quibusdam. Earum,
-			cumque.
+		<div className='space-y-4 md:w-1/3'>
+			<div className='font-bold text-xl'>Examples</div>
+			{definitions?.map((obj, ind) => (
+				<div key={ind}>{obj?.example}</div>
+			))}
 		</div>
 	);
 }
